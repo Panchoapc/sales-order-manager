@@ -16,6 +16,7 @@ import os
 
 load_dotenv()
 DBNAME = os.environ.get('DBNAME')
+DBPASSWORD = os.environ.get("DBPASS")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,10 +82,11 @@ WSGI_APPLICATION = 'salesorder_manager.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "OPTIONS": {
-            "port": 5432,
-            "dbname": DBNAME
-        },
+        'NAME': DBNAME,
+        'USER': "postgres",
+        'PASSWORD': DBPASSWORD,
+        'HOST': 'localhost',  # Or the IP address/hostname of your PostgreSQL server
+        'PORT': '5432', 
     }
 }
 
